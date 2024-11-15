@@ -11,3 +11,5 @@ cmd 启动示例：
 ```cmd
 start "" "BuyiToolbar.exe" "C:\Users\Buyi\Apps"
 ```
+
+![](https://buyi.dev/image/buyi_toolbar.jpg)     
