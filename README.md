@@ -1,7 +1,7 @@
 ﻿# Buyi Toolbar 
 
 解决 windows 11 砍掉的任务栏-工具栏功能。   
-支持文件夹嵌套与打开。   
+支持文件夹嵌套。   
 
 运行库： .NET Framework 4.8   
 
