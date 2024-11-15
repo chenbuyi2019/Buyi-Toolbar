@@ -46,7 +46,7 @@ namespace BuyiToolbar
                 BgIcon.Icon = CreateIconFromText(dir.Name.Substring(0, 1));
                 this.Icon = BgIcon.Icon;
                 BgIcon.Visible = true;
-                BuildMenu(MainMenu.Items, theDir, 0);
+                BuildMenu(MainMenu.Items, theDir);
             }
             catch (Exception ex)
             {
@@ -56,7 +56,9 @@ namespace BuyiToolbar
             }
         }
 
-        private void BuildMenu(ToolStripItemCollection parent, DirectoryInfo dir, int level)
+        private const int limitItems = 49;
+
+        private void BuildMenu(ToolStripItemCollection parent, DirectoryInfo dir)
         {
             parent.Clear();
             dir.Refresh();
@@ -75,10 +77,14 @@ namespace BuyiToolbar
                 v.Tag = f.FullName;
                 v.Click += OnMenuItemClick;
                 parent.Add(v);
-                if (level < 3)
+                var theBlank = new ToolStripMenuItem();
+                theBlank.Text = "loading...";
+                v.DropDownItems.Add(theBlank);
+                v.DropDownOpening += (_, _) =>
                 {
-                    BuildMenu(v.DropDownItems, f, level + 1);
-                }
+                    BuildMenu(v.DropDownItems, f);
+                };
+                if (parent.Count > limitItems) { break; }
             }
             foreach (var f in dir.EnumerateFiles())
             {
@@ -96,6 +102,15 @@ namespace BuyiToolbar
                 v.Click += OnMenuItemClick;
                 v.Tag = f.FullName;
                 parent.Add(v);
+                if (parent.Count > limitItems) { break; }
+            }
+            if (parent.Count < 1)
+            {
+                var v = new ToolStripMenuItem();
+                v.Text = "空的文件夹";
+                v.Tag = dir.FullName;
+                v.Click += OnMenuItemClick;
+                parent.Add(v);
             }
         }
 
@@ -104,7 +119,7 @@ namespace BuyiToolbar
             if (theDir == null) { return; }
             try
             {
-                BuildMenu(MainMenu.Items, theDir, 0);
+                BuildMenu(MainMenu.Items, theDir);
             }
             catch (Exception ex)
             {
@@ -126,9 +141,8 @@ namespace BuyiToolbar
                 };
                 using var _ = Process.Start(pinfo);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                PopError(ex);
             }
         }
 

@@ -48,7 +48,7 @@
             this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aToolStripMenuItem});
             this.MainMenu.Name = "mainMenu";
-            this.MainMenu.Size = new System.Drawing.Size(181, 52);
+            this.MainMenu.Size = new System.Drawing.Size(90, 30);
             this.MainMenu.Opening += new System.ComponentModel.CancelEventHandler(this.MainMenu_Opening);
             // 
             // aToolStripMenuItem
@@ -56,20 +56,20 @@
             this.aToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aToolStripMenuItem1});
             this.aToolStripMenuItem.Name = "aToolStripMenuItem";
-            this.aToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.aToolStripMenuItem.Size = new System.Drawing.Size(89, 26);
             this.aToolStripMenuItem.Text = "a";
             // 
             // aToolStripMenuItem1
             // 
             this.aToolStripMenuItem1.Name = "aToolStripMenuItem1";
-            this.aToolStripMenuItem1.Size = new System.Drawing.Size(180, 26);
+            this.aToolStripMenuItem1.Size = new System.Drawing.Size(89, 26);
             this.aToolStripMenuItem1.Text = "a";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(196, 87);
+            this.ClientSize = new System.Drawing.Size(436, 247);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
